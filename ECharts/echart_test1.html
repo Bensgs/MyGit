@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
+</header>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:300px;"></div>
+	<div id="sub" style="width:600px;height:300px;"></div>
+	
+    <script type="text/javascript">
+	
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 柱状图Demo'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量'],
+				left:'left',
+				top:'bottom'
+            },
+			dataZoom: [
+				{
+					type:'inside',
+					xAxisIndex:0,
+					start: 0,
+					end: 100				
+				},
+				{
+					type:'inside',
+					yAxisIndex:0,
+					start: 0,
+					end: 100
+				},
+				{
+					type:'slider',
+					xAxisIndex:0,
+					start: 50,
+					end: 100				
+				},
+				{
+					type:'slider',
+					yAxisIndex:0,
+					start: 10,
+					end: 100
+				}
+			],
+			xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+		
+		
+		var myChart2 = echarts.init(document.getElementById('sub'));
+		var option2 = {
+			title: {
+				text: 'What a pie!',
+				x:'left'
+			},
+			tooltip: {
+				trigger:'item',
+				formatter:"{a}<br/>{b}:{c}({d}%)"
+			},
+			legend: {
+				orient:'vertical',
+				left:'left',
+				top:'bottom',
+				textStyle:{
+					color:'rgb(0,0,0)'
+				},
+				data:['Dog','Fish','Bird','Cat','Bunny','Snake']
+			},
+			series: [{
+				name: 'Pets',
+				type: 'pie',
+				radius: '55%',
+				//roseType:'angle',
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 100,
+						shadowColor:'rgba(0,0,0,1)'
+					}
+				},
+				data:[
+					{value:555,name:'Dog'},					
+					{value:300,name:'Fish'},
+					{value:313,name:'Bird'},
+					{value:443,name:'Cat'},
+					{value:254,name:'Bunny'},
+					{value:150,name:'Snake'}
+				]
+			}]
+		};
+		myChart2.setOption(option2);
+		
+    </script>
+</body>
+
+</html>
+
