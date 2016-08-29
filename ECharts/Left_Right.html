@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="echarts.min.js"></script>
+        <title>两山对峙</title>
+        <style type='text/css'>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            #left {
+                width: 50%;
+                float: left;
+                background: green;
+                height: 300px;
+                overflow: hidden;
+            }
+            
+            #right {
+                width: 50%;
+                float: right;
+                background: red;
+                height: 300px;
+                overflow: hidden;
+            }        
+
+        </style>
+    </head>
+	
+    <body>
+		<div>
+        <div id="left">Here's left !!!
+        </div>
+        <div id="right">Here's right !!!
+        </div>
+		</div>
+		
+		<hr>
+		
+		<div id="pie">There's something!</div>
+		
+		<hr>
+		
+		<div id="mch100">There's anything!</div>
+		
+		<hr>
+		
+ <script type="text/javascript">
+	
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('left'));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 柱状图Demo'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量'],
+				left:'left',
+				top:'bottom'
+            },
+			dataZoom: [
+				{
+					type:'inside',
+					xAxisIndex:0,
+					start: 0,
+					end: 100				
+				},
+				{
+					type:'inside',
+					yAxisIndex:0,
+					start: 0,
+					end: 100
+				},
+				{
+					type:'slider',
+					xAxisIndex:0,
+					start: 50,
+					end: 100				
+				},
+				{
+					type:'slider',
+					yAxisIndex:0,
+					start: 10,
+					end: 100
+				}
+			],
+			xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);		
+		
+		var myChart2 = echarts.init(document.getElementById('right'));
+		var option2 = {
+			title: {
+				text: 'What a pie!',
+				x:'left'
+			},
+			tooltip: {
+				trigger:'item',
+				formatter:"{a}<br/>{b}:{c}({d}%)"
+			},
+			legend: {
+				orient:'vertical',
+				left:'left',
+				top:'bottom',
+				textStyle:{
+					color:'rgb(0,0,0)'
+				},
+				data:['Dog','Fish','Bird','Cat','Bunny','Snake']
+			},
+			series: [{
+				name: 'Pets',
+				type: 'pie',
+				radius: '55%',
+				//roseType:'angle',
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 100,
+						shadowColor:'rgba(0,0,0,1)'
+					}
+				},
+				data:[
+					{value:555,name:'Dog'},					
+					{value:300,name:'Fish'},
+					{value:313,name:'Bird'},
+					{value:443,name:'Cat'},
+					{value:254,name:'Bunny'},
+					{value:150,name:'Snake'}
+				]
+			}]
+		};
+		myChart2.setOption(option2);
+		
+    </script>
+</body>
+</html>
