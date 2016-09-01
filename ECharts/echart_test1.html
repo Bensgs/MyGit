@@ -2,23 +2,27 @@
 <html>
 <header>
     <meta charset="utf-8">
+	<title>Echarts Demo</title>
     <!-- 引入 ECharts 文件 -->
     <script src="echarts.min.js"></script>
+	<script src="neimenggu.js"></script>
+	<script src="china.js"></script>
 </header>
 
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 600px;height:300px;"></div>
 	<div id="sub" style="width:600px;height:300px;"></div>
+	<div id="geo" style="width:600px;height:300px;"></div>
 	
     <script type="text/javascript">
-	
+		
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: 'ECharts 柱状图Demo'
+                text: 'How Bars Show？'
             },
             tooltip: {},
             legend: {
@@ -106,6 +110,39 @@
 			}]
 		};
 		myChart2.setOption(option2);
+		
+		var myChart3 = echarts.init(document.getElementById('geo'));
+		var option3 = {
+            backgroundColor: '#fff',
+            title: {
+                text: 'Geo Goes Here…',
+                left: 'left',
+                textStyle: {
+                    color: '#000'
+                }
+            },
+            series: [
+                {
+                    type: 'map',
+                    map: '内蒙古',
+                    label: {
+                        emphasis: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+
+                }
+            ]
+        };
+		
+		myChart3.setOption(option3);
+		
+		
+		
+		
+		
 		
     </script>
 </body>

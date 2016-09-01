@@ -3,7 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script src="echarts.min.js"></script>
-        <title>两山对峙</title>
+		<script src="neimenggu.js"></script>
+		<script src="jiangsu.js"></script>
+		<script src="china.js"></script>
+        <title>Echarts Display</title>
         <style type='text/css'>
             * {
                 margin: 0;
@@ -24,7 +27,22 @@
                 background: red;
                 height: 300px;
                 overflow: hidden;
-            }        
+            }   
+
+
+            #geo {
+                width: 50%;
+                float: left;
+                height: 400px;
+                overflow: hidden;
+            }
+            
+            #js {
+                width: 50%;
+                float: right;
+                height: 400px;
+                overflow: hidden;
+            }  			
 
         </style>
     </head>
@@ -35,16 +53,12 @@
         </div>
         <div id="right">Here's right !!!
         </div>
+		</div>		
+		<hr>
+		<div>		
+		<div id="geo">There's something!</div>		
+		<div id="js">There's anything!</div>
 		</div>
-		
-		<hr>
-		
-		<div id="pie">There's something!</div>
-		
-		<hr>
-		
-		<div id="mch100">There's anything!</div>
-		
 		<hr>
 		
  <script type="text/javascript">
@@ -54,7 +68,7 @@
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: 'ECharts 柱状图Demo'
+                text: 'How Bars Show？'
             },
             tooltip: {},
             legend: {
@@ -142,7 +156,332 @@
 			}]
 		};
 		myChart2.setOption(option2);
-		
+
+		var myChart3 = echarts.init(document.getElementById('geo'));
+		var option3 = {
+			backgroundColor : '#fff',
+			title : {
+				text : '各渠道日度收单金额情况',
+				left : 'left',
+				textStyle : {
+					color : '#000'
+				}
+			},
+			tooltip : {
+				trigger : 'item',
+				formatter : function(params) {
+					return params.name + ' : ' + params.value;
+				}
+			},
+			toolbox : {
+				feature : {
+					restore : {},
+					dataView : {},
+					saveAsImage : {}
+				}
+			},
+			legend : {
+				orient : 'vertical',
+				y : 'bottom',
+				x : 'right',
+				data : [ 'POS', 'ATM', '移动互联网', '其他渠道' ],
+				textStyle : {
+					color : '#100'
+				}
+			},
+			visualMap : {
+				min : 0,
+				max : 400,
+				calculable : true,
+				inRange : {
+					color : [ '#50a3ba', '#eac736', '#d94e5d' ]
+				},
+				textStyle : {
+					color : '#000'
+				}
+			},
+			series : [ {
+				name : 'POS',
+				type : 'map',
+				map : '内蒙古',
+				label : {
+					emphasis : {
+						textStyle : {
+							color : '#fff'
+						}
+					}
+				},
+				data : ([ {
+					name : "呼和浩特市",
+					value : 99
+				}, {
+					name : "包头市",
+					value : 96
+				}, {
+					name : "呼伦贝尔市",
+					value : 93
+				}, {
+					name : "鄂尔多斯市",
+					value : 81
+				}, {
+					name : "通辽市",
+					value : 89
+				}, {
+					name : "锡林郭勒盟",
+					value : 85
+				}, {
+					name : "巴彦淖尔市",
+					value : 79
+				} , {
+					name : "赤峰市",
+					value : 81
+				}, {
+					name : "兴安盟",
+					value : 80
+				}, {
+					name : "阿拉善盟",
+					value : 70
+				}, {
+					name : "乌兰察布市",
+					value : 83
+				}, {
+					name : "乌海市",
+					value : 60
+				}]),
+				symbolSize : 15
+			}, {
+				name : 'ATM',
+				type : 'map',
+				map : '内蒙古',
+				label : {
+					emphasis : {
+						textStyle : {
+							color : '#fff'
+						}
+					}
+				},
+				data : ([ {
+					name : "呼和浩特市",
+					value : 99
+				}, {
+					name : "包头市",
+					value : 96
+				}, {
+					name : "呼伦贝尔市",
+					value : 93
+				}, {
+					name : "鄂尔多斯市",
+					value : 81
+				}, {
+					name : "通辽市",
+					value : 89
+				}, {
+					name : "锡林郭勒盟",
+					value : 85
+				} ]),
+				symbolSize : 14
+			}, {
+				name : '移动互联网',
+				type : 'map',
+				map : '内蒙古',
+				label : {
+					emphasis : {
+						textStyle : {
+							color : '#fff'
+						}
+					}
+				},
+				data : ([ {
+					name : "呼和浩特市",
+					value : 99
+				}, {
+					name : "包头市",
+					value : 96
+				}, {
+					name : "呼伦贝尔市",
+					value : 93
+				}, {
+					name : "鄂尔多斯市",
+					value : 81
+				}, {
+					name : "通辽市",
+					value : 89
+				}, {
+					name : "锡林郭勒盟",
+					value : 85
+				} ]),
+				symbolSize : 8
+			}, {
+				name : '其他渠道',
+				type : 'map',
+				map : '内蒙古',
+				label : {
+					emphasis : {
+						textStyle : {
+							color : '#fff'
+						}
+					}
+				},
+				data : ([ {
+					name : "呼和浩特市",
+					value : 99
+				}, {
+					name : "包头市",
+					value : 96
+				}, {
+					name : "呼伦贝尔市",
+					value : 93
+				}, {
+					name : "鄂尔多斯市",
+					value : 81
+				}, {
+					name : "通辽市",
+					value : 89
+				}, {
+					name : "锡林郭勒盟",
+					value : 85
+				} ]),
+				symbolSize : 8
+			}
+			]
+		};		
+		myChart3.setOption(option3);
+
+		var myChart4 = echarts.init(document.getElementById('js'));
+		var option4 = {
+            backgroundColor: '#fff',
+            title: {
+                text: 'Jiangsu Province',
+                left: 'left',
+                textStyle: {
+                    color: '#000'
+                }
+            },
+			tooltip: {
+				trigger: 'item',
+				formatter: function (params) {
+				return params.name + ' : ' + params.value;
+				}
+			},
+			toolbox: {
+				feature: {
+					restore: {},
+					dataView:{},
+					saveAsImage: {}
+				}
+			},
+			legend: {
+				orient:'vertical',
+				y:'bottom',
+				x:'right',
+				data:['吃','喝','嫖','赌'],
+				textStyle:{
+					color:'#100'
+				}
+			},
+			visualMap:{
+				min:0,
+				max:400,
+				calculable:true,
+				inRange:{
+					color:['#50a3ba','#eac736','#d94e5d']
+				},
+				textStyle:{
+					color:'#000'
+				}
+			},
+            series: [
+                {
+					name:'吃',
+                    type: 'map',
+                    map: '江苏',
+                    label: {
+                        emphasis: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+					data: ([
+						{name:"苏州市",value:99},
+						{name:"无锡市",value:96},
+						{name:"常州市",value:93},
+						{name:"镇江市",value:81},
+						{name:"南京市",value:89},
+						{name:"南通市",value:85}
+					]),					
+					symbolSize:15
+                },
+				{
+					name:'喝',
+                    type: 'map',
+                    map: '江苏',
+                    label: {
+                        emphasis: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+					data: ([
+						{name:"苏州市",value:99},
+						{name:"无锡市",value:96},
+						{name:"常州市",value:93},
+						{name:"镇江市",value:81},
+						{name:"南京市",value:89},
+						{name:"南通市",value:85}
+					]),					
+					symbolSize:14
+                },
+				{
+					name:'嫖',
+                    type: 'map',
+                    map: '江苏',
+                    label: {
+                        emphasis: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+					data: ([
+						{name:"苏州市",value:99},
+						{name:"无锡市",value:96},
+						{name:"常州市",value:93},
+						{name:"镇江市",value:81},
+						{name:"南京市",value:89},
+						{name:"南通市",value:85}
+					]),					
+					symbolSize:8
+                },			
+				{
+					name:'赌',
+                    type: 'map',
+                    map: '江苏',
+                    label: {
+                        emphasis: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+					data: ([
+						{name:"苏州市",value:99},
+						{name:"无锡市",value:96},
+						{name:"常州市",value:93},
+						{name:"镇江市",value:81},
+						{name:"南京市",value:89},
+						{name:"南通市",value:85}
+					]),					
+					symbolSize:8
+                },				
+				
+            ]			
+			
+			
+			
+        };		
+		myChart4.setOption(option4);		
     </script>
 </body>
 </html>
